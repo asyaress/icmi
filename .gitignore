@@ -12,6 +12,8 @@ Thumbs.db
 .env.backup
 .env.production
 /auth.json
+/secure/
+*.service-account.json
 
 # Dependencies / build artifacts
 /node_modules

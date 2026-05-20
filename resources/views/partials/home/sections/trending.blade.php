@@ -27,13 +27,13 @@
                         <div class="col-lg-7 col-md-6">
                             <div class="binduz-er-trending-box icmi-trending-headline-box">
                                 <div class="binduz-er-trending-news-item icmi-trending-headline">
-                                    <img src="{{ $headline->featured_image ? asset('storage/'.$headline->featured_image) : asset('assets/images/trending-thumb.png') }}" alt="{{ $headline->title }}">
+                                    <img src="{{ $headline->featured_image ? asset('storage/'.$headline->featured_image) : asset('assets/images/trending-thumb.png') }}" alt="{{ $headline->translated('title') }}">
                                     <div class="binduz-er-trending-news-overlay">
                                         <div class="binduz-er-trending-news-meta">
-                                            <div class="binduz-er-meta-categories"><a href="#">{{ $headline->category->name ?? __('ui.menu.news') }}</a></div>
+                                            <div class="binduz-er-meta-categories"><a href="#">{{ optional($headline->category)->translated('name') ?? __('ui.menu.news') }}</a></div>
                                             <div class="binduz-er-meta-date"><span><i class="fal fa-calendar-alt"></i> {{ optional($headline->published_at)?->translatedFormat('d M Y') }}</span></div>
                                             <div class="binduz-er-trending-news-title">
-                                                <h3 class="binduz-er-title"><a href="{{ $resolvePostUrl($headline) }}">{{ $headline->title }}</a></h3>
+                                                <h3 class="binduz-er-title"><a href="{{ $resolvePostUrl($headline) }}">{{ $headline->translated('title') }}</a></h3>
                                             </div>
                                         </div>
                                         <div class="binduz-er-news-share"><a href="{{ $resolvePostUrl($headline) }}"><i class="fal fa-share"></i></a></div>
@@ -46,15 +46,15 @@
                                 @foreach($sidePosts as $post)
                                     <article class="icmi-trending-side-card">
                                         <a class="icmi-trending-side-card__thumb" href="{{ $resolvePostUrl($post) }}">
-                                            <img src="{{ $post->featured_image ? asset('storage/'.$post->featured_image) : asset('assets/images/trending-news-list-thumb-1.jpg') }}" alt="{{ $post->title }}">
+                                            <img src="{{ $post->featured_image ? asset('storage/'.$post->featured_image) : asset('assets/images/trending-news-list-thumb-1.jpg') }}" alt="{{ $post->translated('title') }}">
                                         </a>
                                         <div class="icmi-trending-side-card__content">
                                             <div class="binduz-er-meta-item icmi-trending-side-card__meta">
-                                                <div class="binduz-er-meta-categories"><a href="#">{{ $post->category->name ?? __('ui.menu.news') }}</a></div>
+                                                <div class="binduz-er-meta-categories"><a href="#">{{ optional($post->category)->translated('name') ?? __('ui.menu.news') }}</a></div>
                                                 <div class="binduz-er-meta-date"><span><i class="fal fa-calendar-alt"></i> {{ optional($post->published_at)?->translatedFormat('d M Y') }}</span></div>
                                             </div>
                                             <h4 class="binduz-er-title icmi-trending-side-card__title">
-                                                <a href="{{ $resolvePostUrl($post) }}">{{ \Illuminate\Support\Str::limit($post->title, 82) }}</a>
+                                                <a href="{{ $resolvePostUrl($post) }}">{{ \Illuminate\Support\Str::limit($post->translated('title'), 82) }}</a>
                                             </h4>
                                         </div>
                                     </article>
@@ -76,7 +76,7 @@
                         @forelse($categories as $category)
                             <div class="binduz-er-item">
                                 <a href="{{ route('berita', ['category' => $category->slug]) }}">
-                                    <span>{{ $category->name }}</span>
+                                    <span>{{ $category->translated('name') }}</span>
                                     <span class="binduz-er-number">{{ $category->published_posts_count }}</span>
                                 </a>
                             </div>
@@ -90,3 +90,7 @@
     </div>
 </section>
 <!--====== BINDUZ TRENDING PART ENDS ======-->
+
+
+
+

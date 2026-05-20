@@ -5,9 +5,11 @@ namespace App\Providers;
 use App\Models\Category;
 use App\Models\Gallery;
 use App\Models\Post;
+use App\Models\ProfilePage;
 use App\Models\Setting;
 use App\Models\Tag;
 use App\Models\Video;
+use App\Observers\ContentTranslationObserver;
 use App\Observers\PublicContentObserver;
 use App\Support\Weather\KaltimWeatherService;
 use Illuminate\Cache\RateLimiting\Limit;
@@ -42,7 +44,14 @@ class AppServiceProvider extends ServiceProvider
         Tag::observe(PublicContentObserver::class);
         Gallery::observe(PublicContentObserver::class);
         Video::observe(PublicContentObserver::class);
+        ProfilePage::observe(PublicContentObserver::class);
         Setting::observe(PublicContentObserver::class);
+
+        Post::observe(ContentTranslationObserver::class);
+        Category::observe(ContentTranslationObserver::class);
+        ProfilePage::observe(ContentTranslationObserver::class);
+        Video::observe(ContentTranslationObserver::class);
+        Gallery::observe(ContentTranslationObserver::class);
 
         View::composer('partials.home.sections.hero', function ($view): void {
             $weatherItems = app(KaltimWeatherService::class)->getItemsCachedOnly((string) app()->getLocale());

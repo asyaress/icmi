@@ -5,6 +5,7 @@
         $sekilasPages = \App\Models\ProfilePage::query()
             ->published()
             ->orderBy('menu_order')
+            ->with('translations')
             ->get(['slug', 'title', 'menu_label']);
     }
 @endphp
@@ -33,7 +34,7 @@
                                                     @foreach($sekilasPages as $sekilasPage)
                                                         <li>
                                                             <a href="{{ route('sekilas-icmi.show', $sekilasPage->slug) }}">
-                                                                {{ $sekilasPage->menu_label ?: \Illuminate\Support\Str::upper($sekilasPage->title) }}
+                                                                {{ $sekilasPage->translated('menu_label') ?: $sekilasPage->translated('title') }}
                                                             </a>
                                                         </li>
                                                     @endforeach
@@ -43,8 +44,8 @@
                                         <li class="nav-item {{ request()->routeIs('info-media*') ? 'active' : '' }}">
                                             <a class="nav-link" href="{{ route('info-media') }}">{{ __('ui.menu.info_media') }}</a>
                                             <ul class="sub-menu">
-                                                <li><a href="{{ route('info-media', ['category' => 'siaran-pers']) }}">SIARAN PERS</a></li>
-                                                <li><a href="{{ route('info-media', ['category' => 'kabar-icmi']) }}">KABAR ICMI</a></li>
+                                                <li><a href="{{ route('info-media', ['category' => 'siaran-pers']) }}">{{ __('ui.submenu.info_media.siaran_pers') }}</a></li>
+                                                <li><a href="{{ route('info-media', ['category' => 'kabar-icmi']) }}">{{ __('ui.submenu.info_media.kabar_icmi') }}</a></li>
                                             </ul>
                                         </li>
                                         <li class="nav-item {{ request()->routeIs('berita*') ? 'active' : '' }}">
@@ -53,8 +54,8 @@
                                         <li class="nav-item {{ request()->routeIs('opini-tokoh*') ? 'active' : '' }}">
                                             <a class="nav-link" href="{{ route('opini-tokoh') }}">{{ __('ui.menu.opinion') }}</a>
                                             <ul class="sub-menu">
-                                                <li><a href="{{ route('opini-tokoh', ['category' => 'opini']) }}">OPINI</a></li>
-                                                <li><a href="{{ route('opini-tokoh', ['category' => 'tokoh']) }}">TOKOH</a></li>
+                                                <li><a href="{{ route('opini-tokoh', ['category' => 'opini']) }}">{{ __('ui.submenu.opinion.opini') }}</a></li>
+                                                <li><a href="{{ route('opini-tokoh', ['category' => 'tokoh']) }}">{{ __('ui.submenu.opinion.tokoh') }}</a></li>
                                             </ul>
                                         </li>
                                         <li class="nav-item {{ request()->routeIs('galeri*') ? 'active' : '' }}">
@@ -80,3 +81,4 @@
             </div>
         </div>
     </header>
+

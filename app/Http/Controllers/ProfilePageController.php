@@ -13,6 +13,7 @@ class ProfilePageController extends Controller
     {
         $firstPage = ProfilePage::query()
             ->published()
+            ->with('translations')
             ->orderBy('menu_order')
             ->firstOrFail();
 
@@ -21,15 +22,18 @@ class ProfilePageController extends Controller
 
     public function show(string $slug): View
     {
-        $payload = PublicCache::remember("profile:show:{$slug}", function () use ($slug): array {
+        $locale = app()->getLocale();
+        $payload = PublicCache::remember("profile:show:{$slug}:{$locale}", function () use ($slug): array {
             $page = ProfilePage::query()
                 ->published()
+                ->with('translations')
                 ->where('slug', $slug)
                 ->firstOrFail();
 
             $menuPages = ProfilePage::query()
                 ->published()
                 ->orderBy('menu_order')
+                ->with('translations')
                 ->get(['id', 'title', 'slug', 'menu_label']);
 
             return compact('page', 'menuPages');

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 return [
     'meta' => [
@@ -17,6 +17,24 @@ return [
         'opinion' => 'Opinion & Figures',
         'gallery' => 'Gallery',
         'tv' => 'ICMI TV',
+    ],
+    'submenu' => [
+        'about' => [
+            'history' => 'HISTORY',
+            'vision_mission' => 'VISION & MISSION',
+            'management' => 'MANAGEMENT STRUCTURE',
+            'network' => 'ICMI NETWORK',
+            'statutes' => 'STATUTES',
+            'bylaws' => 'BYLAWS (ART)',
+        ],
+        'info_media' => [
+            'siaran_pers' => 'Press Releases',
+            'kabar_icmi' => 'ICMI Updates',
+        ],
+        'opinion' => [
+            'opini' => 'Opinions',
+            'tokoh' => 'Figures',
+        ],
     ],
     'topbar' => [
         'trending_label' => 'Trending News:',
@@ -102,6 +120,13 @@ return [
             'program' => 'Program',
             'search_placeholder' => 'Search video titles',
             'related' => 'More Videos',
+            'labels' => [
+                'news' => 'NEWS',
+                'dialogue' => 'DIALOGUE',
+                'imtaq' => 'IMTAQ',
+                'figure' => 'FIGURE',
+                'update' => 'UPDATE',
+            ],
         ],
         'about' => [
             'title' => 'About ICMI',

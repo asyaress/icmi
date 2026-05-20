@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 return [
     'meta' => [
@@ -17,6 +17,24 @@ return [
         'opinion' => 'Opini & Tokoh',
         'gallery' => 'Galeri',
         'tv' => 'ICMI TV',
+    ],
+    'submenu' => [
+        'about' => [
+            'history' => 'SEJARAH',
+            'vision_mission' => 'VISI & MISI',
+            'management' => 'SUSUNAN PENGURUS',
+            'network' => 'JARINGAN ICMI',
+            'statutes' => 'ANGGARAN DASAR',
+            'bylaws' => 'ART',
+        ],
+        'info_media' => [
+            'siaran_pers' => 'SIARAN PERS',
+            'kabar_icmi' => 'KABAR ICMI',
+        ],
+        'opinion' => [
+            'opini' => 'OPINI',
+            'tokoh' => 'TOKOH',
+        ],
     ],
     'topbar' => [
         'trending_label' => 'Trending News:',
@@ -102,6 +120,13 @@ return [
             'program' => 'Program',
             'search_placeholder' => 'Cari judul video',
             'related' => 'Video Lainnya',
+            'labels' => [
+                'news' => 'BERITA',
+                'dialogue' => 'DIALOG',
+                'imtaq' => 'IMTAQ',
+                'figure' => 'TOKOH',
+                'update' => 'UPDATE',
+            ],
         ],
         'about' => [
             'title' => 'Sekilas ICMI',

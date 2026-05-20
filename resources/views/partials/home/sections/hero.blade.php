@@ -32,14 +32,14 @@
                             <div class="binduz-er-hero-news-content">
                                 <div class="binduz-er-hero-meta">
                                     <div class="binduz-er-meta-category">
-                                        <a href="#">{{ $heroPost->category->name ?? 'Berita' }}</a>
+                                        <a href="#">{{ optional($heroPost->category)->translated('name') ?? __('ui.menu.news') }}</a>
                                     </div>
                                     <div class="binduz-er-meta-date">
                                         <span><i class="fal fa-calendar-alt"></i> {{ optional($heroPost->published_at)->format('d M Y') }}</span>
                                     </div>
                                 </div>
                                 <div class="binduz-er-hero-title">
-                                    <h3 class="binduz-er-title"><a href="{{ $resolvePostUrl($heroPost) }}">{{ $heroPost->title }}</a></h3>
+                                    <h3 class="binduz-er-title"><a href="{{ $resolvePostUrl($heroPost) }}">{{ $heroPost->translated('title') }}</a></h3>
                                 </div>
                                 <div class="binduz-er-meta-author">
                                     <div class="binduz-er-author">
@@ -78,14 +78,14 @@
                 <div class="binduz-er-news-portal-item">
                     <div class="binduz-er-thumb">
                         <a href="{{ $resolvePostUrl($heroPost) }}">
-                            <img src="{{ $heroPost->featured_image ? asset('storage/'.$heroPost->featured_image) : asset('assets/images/news-portal-1.jpg') }}" alt="{{ $heroPost->title }}">
+                            <img src="{{ $heroPost->featured_image ? asset('storage/'.$heroPost->featured_image) : asset('assets/images/news-portal-1.jpg') }}" alt="{{ $heroPost->translated('title') }}">
                         </a>
                     </div>
                     <div class="binduz-er-content">
                         <div class="binduz-er-post-meta-date">
                             <span><i class="fal fa-calendar-alt"></i> {{ optional($heroPost->published_at)->format('d M Y') }}</span>
                         </div>
-                        <h4 class="binduz-er-title"><a href="{{ $resolvePostUrl($heroPost) }}">{{ \Illuminate\Support\Str::limit($heroPost->title, 60) }}</a></h4>
+                        <h4 class="binduz-er-title"><a href="{{ $resolvePostUrl($heroPost) }}">{{ \Illuminate\Support\Str::limit($heroPost->translated('title'), 60) }}</a></h4>
                     </div>
                 </div>
             @endforeach
@@ -93,5 +93,9 @@
     </div>
 @endif
 <!--====== BINDUZ HERO PART ENDS ======-->
+
+
+
+
 
 

@@ -34,7 +34,7 @@
                 <select name="category" class="form-select">
                     <option value="">{{ __('ui.common.all_categories') }}</option>
                     @foreach($categories as $category)
-                        <option value="{{ $category->slug }}" @selected($categorySlug === $category->slug)>{{ $category->name }}</option>
+                        <option value="{{ $category->slug }}" @selected($categorySlug === $category->slug)>{{ $category->translated('name') }}</option>
                     @endforeach
                 </select>
             </div>
@@ -56,21 +56,21 @@
                         <div class="binduz-er-trending-news-list-box">
                             <div class="binduz-er-thumb">
                                 <a href="{{ route('berita.show', $post->slug) }}">
-                                    <img src="{{ $post->featured_image ? asset('storage/'.$post->featured_image) : asset('assets/images/main-post-thumb-1.jpg') }}" alt="{{ $post->title }}">
+                                    <img src="{{ $post->featured_image ? asset('storage/'.$post->featured_image) : asset('assets/images/main-post-thumb-1.jpg') }}" alt="{{ $post->translated('title') }}">
                                 </a>
                             </div>
                             <div class="binduz-er-content">
                                 <div class="binduz-er-meta-item">
                                     <div class="binduz-er-meta-categories">
-                                        <a href="#">{{ $post->category->name ?? __('ui.menu.news') }}</a>
+                                        <a href="#">{{ optional($post->category)->translated('name') ?? __('ui.menu.news') }}</a>
                                     </div>
                                     <div class="binduz-er-meta-date">
                                         <span><i class="fal fa-calendar-alt"></i> {{ optional($post->published_at)->format('d M Y') }}</span>
                                     </div>
                                 </div>
                                 <div class="binduz-er-trending-news-list-title">
-                                    <h4 class="binduz-er-title"><a href="{{ route('berita.show', $post->slug) }}">{{ $post->title }}</a></h4>
-                                    <p>{{ $post->excerpt }}</p>
+                                    <h4 class="binduz-er-title"><a href="{{ route('berita.show', $post->slug) }}">{{ $post->translated('title') }}</a></h4>
+                                    <p>{{ $post->translated('excerpt') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -89,3 +89,7 @@
     </div>
 </section>
 @endsection
+
+
+
+

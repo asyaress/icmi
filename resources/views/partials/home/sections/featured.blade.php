@@ -15,15 +15,15 @@
                         @forelse($otherFeatured as $post)
                             <div class="binduz-er-trending-news-list-box">
                                 <div class="binduz-er-thumb">
-                                    <img src="{{ $post->featured_image ? asset('storage/'.$post->featured_image) : asset('assets/images/feature-news-thuimb.jpg') }}" alt="{{ $post->title }}">
+                                    <img src="{{ $post->featured_image ? asset('storage/'.$post->featured_image) : asset('assets/images/feature-news-thuimb.jpg') }}" alt="{{ $post->translated('title') }}">
                                 </div>
                                 <div class="binduz-er-content">
                                     <div class="binduz-er-meta-item">
-                                        <div class="binduz-er-meta-categories"><a href="#">{{ $post->category->name ?? __('ui.menu.news') }}</a></div>
+                                        <div class="binduz-er-meta-categories"><a href="#">{{ optional($post->category)->translated('name') ?? __('ui.menu.news') }}</a></div>
                                         <div class="binduz-er-meta-date"><span><i class="fal fa-calendar-alt"></i> {{ optional($post->published_at)?->translatedFormat('d M Y') }}</span></div>
                                     </div>
                                     <div class="binduz-er-trending-news-list-title">
-                                        <h4 class="binduz-er-title"><a href="{{ route('berita.show', $post->slug) }}">{{ \Illuminate\Support\Str::limit($post->title, 65) }}</a></h4>
+                                        <h4 class="binduz-er-title"><a href="{{ route('berita.show', $post->slug) }}">{{ \Illuminate\Support\Str::limit($post->translated('title'), 65) }}</a></h4>
                                     </div>
                                 </div>
                             </div>
@@ -36,13 +36,13 @@
             <div class="col-lg-5 col-md-6">
                 @if($mainFeatured)
                     <div class="binduz-er-trending-news-item mb-30">
-                        <img src="{{ $mainFeatured->featured_image ? asset('storage/'.$mainFeatured->featured_image) : asset('assets/images/featured-trending-thumb-1.jpg') }}" alt="{{ $mainFeatured->title }}">
+                        <img src="{{ $mainFeatured->featured_image ? asset('storage/'.$mainFeatured->featured_image) : asset('assets/images/featured-trending-thumb-1.jpg') }}" alt="{{ $mainFeatured->translated('title') }}">
                         <div class="binduz-er-trending-news-overlay">
                             <div class="binduz-er-trending-news-meta">
-                                <div class="binduz-er-meta-categories"><a href="#">{{ $mainFeatured->category->name ?? __('ui.menu.news') }}</a></div>
+                                <div class="binduz-er-meta-categories"><a href="#">{{ optional($mainFeatured->category)->translated('name') ?? __('ui.menu.news') }}</a></div>
                                 <div class="binduz-er-meta-date"><span><i class="fal fa-calendar-alt"></i> {{ optional($mainFeatured->published_at)?->translatedFormat('d M Y') }}</span></div>
                                 <div class="binduz-er-trending-news-title">
-                                    <h3 class="binduz-er-title"><a href="{{ route('berita.show', $mainFeatured->slug) }}">{{ $mainFeatured->title }}</a></h3>
+                                    <h3 class="binduz-er-title"><a href="{{ route('berita.show', $mainFeatured->slug) }}">{{ $mainFeatured->translated('title') }}</a></h3>
                                 </div>
                             </div>
                             <div class="binduz-er-news-share"><a href="{{ route('berita.show', $mainFeatured->slug) }}"><i class="fal fa-share"></i></a></div>
@@ -52,13 +52,13 @@
 
                 @if($latestGalleries->isNotEmpty())
                     <div class="binduz-er-trending-news-item mb-30">
-                        <img src="{{ $latestGalleries->first()->cover_image ? asset('storage/'.$latestGalleries->first()->cover_image) : asset('assets/images/featured-trending-thumb-2.jpg') }}" alt="{{ $latestGalleries->first()->title }}">
+                        <img src="{{ $latestGalleries->first()->cover_image ? asset('storage/'.$latestGalleries->first()->cover_image) : asset('assets/images/featured-trending-thumb-2.jpg') }}" alt="{{ $latestGalleries->first()->translated('title') }}">
                         <div class="binduz-er-trending-news-overlay">
                             <div class="binduz-er-trending-news-meta">
                                 <div class="binduz-er-meta-categories"><a href="{{ route('galeri') }}">{{ __('ui.menu.gallery') }}</a></div>
                                 <div class="binduz-er-meta-date"><span><i class="fal fa-images"></i> {{ __('ui.pages.gallery.photos_count', ['count' => $latestGalleries->first()->items_count]) }}</span></div>
                                 <div class="binduz-er-trending-news-title">
-                                    <h3 class="binduz-er-title"><a href="{{ route('galeri.show', $latestGalleries->first()->slug) }}">{{ $latestGalleries->first()->title }}</a></h3>
+                                    <h3 class="binduz-er-title"><a href="{{ route('galeri.show', $latestGalleries->first()->slug) }}">{{ $latestGalleries->first()->translated('title') }}</a></h3>
                                 </div>
                             </div>
                             <div class="binduz-er-news-share"><a href="{{ route('galeri.show', $latestGalleries->first()->slug) }}"><i class="fal fa-share"></i></a></div>
@@ -89,3 +89,7 @@
     </div>
 </section>
 <!--====== BINDUZ FEATURED PART ENDS ======-->
+
+
+
+

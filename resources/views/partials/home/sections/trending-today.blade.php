@@ -30,15 +30,15 @@
                     <div class="binduz-er-trending-today-item h-100">
                         <div class="binduz-er-trending-news-list-box">
                             <div class="binduz-er-thumb">
-                                <img src="{{ $post->featured_image ? asset('storage/'.$post->featured_image) : asset('assets/images/trending-today-thumb-1.png') }}" alt="{{ $post->title }}">
+                                <img src="{{ $post->featured_image ? asset('storage/'.$post->featured_image) : asset('assets/images/trending-today-thumb-1.png') }}" alt="{{ $post->translated('title') }}">
                             </div>
                             <div class="binduz-er-content">
                                 <div class="binduz-er-meta-item">
-                                    <div class="binduz-er-meta-categories"><a href="#">{{ $post->category->name ?? __('ui.menu.news') }}</a></div>
+                                    <div class="binduz-er-meta-categories"><a href="#">{{ optional($post->category)->translated('name') ?? __('ui.menu.news') }}</a></div>
                                     <div class="binduz-er-meta-date"><span><i class="fal fa-calendar-alt"></i> {{ optional($post->published_at)?->translatedFormat('d M Y') }}</span></div>
                                 </div>
                                 <div class="binduz-er-trending-news-list-title">
-                                    <h4 class="binduz-er-title"><a href="{{ $resolvePostUrl($post) }}">{{ \Illuminate\Support\Str::limit($post->title, 62) }}</a></h4>
+                                    <h4 class="binduz-er-title"><a href="{{ $resolvePostUrl($post) }}">{{ \Illuminate\Support\Str::limit($post->translated('title'), 62) }}</a></h4>
                                 </div>
                             </div>
                         </div>
@@ -51,3 +51,7 @@
     </div>
 </section>
 <!--====== BINDUZ TRENDING TODAY PART ENDS ======-->
+
+
+
+

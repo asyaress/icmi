@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\HasContentTranslations;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ProfilePage extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasContentTranslations;
 
     protected $fillable = [
         'title',

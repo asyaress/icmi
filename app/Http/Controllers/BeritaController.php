@@ -14,13 +14,24 @@ class BeritaController extends Controller
     {
         $search = trim((string) $request->query('q', ''));
         $categorySlug = trim((string) $request->query('category', ''));
+        $locale = app()->getLocale();
 
         $posts = Post::query()
             ->type(Post::TYPE_NEWS)
-            ->with(['category', 'author', 'tags'])
+            ->with(['category.translations', 'author', 'tags', 'translations'])
             ->published()
-            ->when($search !== '', function ($query) use ($search): void {
-                $query->where('title', 'like', "%{$search}%");
+            ->when($search !== '', function ($query) use ($search, $locale): void {
+                $query->where(function ($innerQuery) use ($search, $locale): void {
+                    $innerQuery->where('title', 'like', "%{$search}%");
+                    if ($locale === 'en') {
+                        $innerQuery->orWhereHas('translations', function ($translationQuery) use ($search): void {
+                            $translationQuery
+                                ->where('locale', 'en')
+                                ->where('field', 'title')
+                                ->where('value', 'like', "%{$search}%");
+                        });
+                    }
+                });
             })
             ->when($categorySlug !== '', function ($query) use ($categorySlug): void {
                 $query->whereHas('category', function ($categoryQuery) use ($categorySlug): void {
@@ -35,18 +46,18 @@ class BeritaController extends Controller
             ->whereHas('posts', function ($query): void {
                 $query->type(Post::TYPE_NEWS)->published();
             })
-            ->orderBy('name')
-            ->get();
+            ->with('translations')->orderBy('name')->get();
 
         return view('berita.index', compact('posts', 'categories', 'search', 'categorySlug'));
     }
 
     public function show(string $slug): View
     {
-        $payload = PublicCache::remember("berita:show:{$slug}", function () use ($slug): array {
+        $locale = app()->getLocale();
+        $payload = PublicCache::remember("berita:show:{$slug}:{$locale}", function () use ($slug): array {
             $post = Post::query()
                 ->type(Post::TYPE_NEWS)
-                ->with(['category', 'author', 'tags'])
+                ->with(['category.translations', 'author', 'tags', 'translations'])
                 ->published()
                 ->where('slug', $slug)
                 ->firstOrFail();
@@ -54,6 +65,7 @@ class BeritaController extends Controller
             $relatedPosts = Post::query()
                 ->type(Post::TYPE_NEWS)
                 ->published()
+                ->with(['translations', 'category.translations'])
                 ->where('id', '!=', $post->id)
                 ->where('category_id', $post->category_id)
                 ->latest('published_at')
@@ -66,3 +78,4 @@ class BeritaController extends Controller
         return view('berita.show', $payload);
     }
 }
+

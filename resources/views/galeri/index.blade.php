@@ -39,7 +39,7 @@
                         <div class="binduz-er-trending-news-list-box">
                             <div class="binduz-er-thumb">
                                 <a href="{{ route('galeri.show', $gallery->slug) }}">
-                                    <img src="{{ $gallery->cover_image ? asset('storage/'.$gallery->cover_image) : asset('assets/images/main-post-thumb-1.jpg') }}" alt="{{ $gallery->title }}">
+                                    <img src="{{ $gallery->cover_image ? asset('storage/'.$gallery->cover_image) : asset('assets/images/main-post-thumb-1.jpg') }}" alt="{{ $gallery->translated('title') }}">
                                 </a>
                             </div>
                             <div class="binduz-er-content">
@@ -48,8 +48,8 @@
                                     <div class="binduz-er-meta-date"><span><i class="fal fa-images"></i> {{ __('ui.pages.gallery.photos_count', ['count' => $gallery->items_count]) }}</span></div>
                                 </div>
                                 <div class="binduz-er-trending-news-list-title">
-                                    <h4 class="binduz-er-title"><a href="{{ route('galeri.show', $gallery->slug) }}">{{ $gallery->title }}</a></h4>
-                                    <p>{{ \Illuminate\Support\Str::limit((string) $gallery->description, 100) }}</p>
+                                    <h4 class="binduz-er-title"><a href="{{ route('galeri.show', $gallery->slug) }}">{{ $gallery->translated('title') }}</a></h4>
+                                    <p>{{ \Illuminate\Support\Str::limit((string) $gallery->translated('description'), 100) }}</p>
                                 </div>
                             </div>
                         </div>
@@ -64,3 +64,4 @@
     </div>
 </section>
 @endsection
+

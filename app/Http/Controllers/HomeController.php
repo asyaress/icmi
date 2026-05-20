@@ -15,7 +15,9 @@ class HomeController extends Controller
 {
     public function __invoke(): View
     {
-        $payload = PublicCache::remember('home:payload', function (): array {
+        $locale = app()->getLocale();
+
+        $payload = PublicCache::remember("home:payload:{$locale}", function (): array {
             $config = $this->loadHomeConfig();
 
             $heroPosts = collect();
@@ -23,7 +25,7 @@ class HomeController extends Controller
                 $heroPosts = Post::query()
                     ->type(Post::TYPE_NEWS)
                     ->published()
-                    ->with(['category', 'author'])
+                    ->with(['category.translations', 'author', 'translations'])
                     ->latest('published_at')
                     ->limit($config['hero_limit'])
                     ->get();
@@ -33,7 +35,7 @@ class HomeController extends Controller
             if ($config['show_trending']) {
                 $trendingPosts = Post::query()
                     ->published()
-                    ->with(['category', 'author'])
+                    ->with(['category.translations', 'author', 'translations'])
                     ->latest('published_at')
                     ->limit($config['trending_limit'])
                     ->get();
@@ -44,7 +46,7 @@ class HomeController extends Controller
                 $featuredPosts = Post::query()
                     ->type(Post::TYPE_NEWS)
                     ->published()
-                    ->with(['category', 'author'])
+                    ->with(['category.translations', 'author', 'translations'])
                     ->whereNotNull('featured_image')
                     ->latest('published_at')
                     ->limit($config['featured_limit'])
@@ -55,6 +57,7 @@ class HomeController extends Controller
             if ($config['show_video']) {
                 $videoPosts = Video::query()
                     ->published()
+                    ->with('translations')
                     ->latest('published_at')
                     ->limit($config['video_limit'])
                     ->get();
@@ -64,7 +67,7 @@ class HomeController extends Controller
             if ($config['show_trending_today']) {
                 $trendingTodayPosts = Post::query()
                     ->published()
-                    ->with(['category', 'author'])
+                    ->with(['category.translations', 'author', 'translations'])
                     ->latest('published_at')
                     ->limit($config['trending_today_limit'])
                     ->get();
@@ -75,7 +78,7 @@ class HomeController extends Controller
                 $mainPosts = Post::query()
                     ->type(Post::TYPE_NEWS)
                     ->published()
-                    ->with(['category', 'author'])
+                    ->with(['category.translations', 'author', 'translations'])
                     ->latest('published_at')
                     ->limit($config['main_posts_limit'])
                     ->get();
@@ -85,6 +88,7 @@ class HomeController extends Controller
                 ->whereHas('posts', function ($query): void {
                     $query->published();
                 })
+                ->with('translations')
                 ->withCount(['posts as published_posts_count' => function ($query): void {
                     $query->published();
                 }])
@@ -94,6 +98,7 @@ class HomeController extends Controller
 
             $latestGalleries = Gallery::query()
                 ->published()
+                ->with('translations')
                 ->withCount('items')
                 ->latest('published_at')
                 ->limit(3)
@@ -136,3 +141,4 @@ class HomeController extends Controller
         ];
     }
 }
+

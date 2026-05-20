@@ -1,8 +1,8 @@
 @extends('layouts.page')
 
-@section('title', $post->title.' - ICMI Kaltim')
-@section('meta_title', $post->seo_title ?: $post->title.' - ICMI Kaltim')
-@section('meta_description', $post->seo_description ?: \Illuminate\Support\Str::limit((string) ($post->excerpt ?: strip_tags($post->content)), 160))
+@section('title', $post->translated('title').' - ICMI Kaltim')
+@section('meta_title', $post->translated('seo_title') ?: $post->translated('title').' - ICMI Kaltim')
+@section('meta_description', $post->translated('seo_description') ?: \Illuminate\Support\Str::limit((string) ($post->translated('excerpt') ?: strip_tags($post->translated('content'))), 160))
 @section('meta_image', $post->featured_image ? asset('storage/'.$post->featured_image) : asset('logo-icmi.png'))
 @section('body_class', 'gray-bg bg-2')
 @section('top_header_cover_class', 'bg_cover')
@@ -17,7 +17,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('ui.menu.home') }}</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('berita') }}">{{ __('ui.pages.news.title') }}</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ $post->title }}</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ $post->translated('title') }}</li>
                         </ol>
                     </nav>
                 </div>
@@ -33,20 +33,23 @@
                 <article class="binduz-er-blog-details-box">
                     <div class="binduz-er-meta-item mb-2">
                         <div class="binduz-er-meta-categories">
-                            <a href="#">{{ $post->category->name ?? __('ui.menu.news') }}</a>
+                            <a href="#">{{ optional($post->category)->translated('name') ?? __('ui.menu.news') }}</a>
                         </div>
                         <div class="binduz-er-meta-date">
                             <span><i class="fal fa-calendar-alt"></i> {{ optional($post->published_at)->format('d M Y H:i') }}</span>
                         </div>
                     </div>
-                    <h1 class="binduz-er-title mb-3">{{ $post->title }}</h1>
+                    <h1 class="binduz-er-title mb-3">{{ $post->translated('title') }}</h1>
                     @if($post->featured_image)
                         <div class="binduz-er-thumb mb-4">
-                            <img src="{{ asset('storage/'.$post->featured_image) }}" alt="{{ $post->title }}">
+                            <img src="{{ asset('storage/'.$post->featured_image) }}" alt="{{ $post->translated('title') }}">
                         </div>
                     @endif
+                    @php
+                        $isHtmlContent = strip_tags((string) $post->translated('content')) !== (string) $post->translated('content');
+                    @endphp
                     <div class="binduz-er-text">
-                        {!! nl2br(e($post->content)) !!}
+                        {!! $isHtmlContent ? $post->translated('content') : nl2br(e($post->translated('content'))) !!}
                     </div>
                 </article>
             </div>
@@ -59,11 +62,11 @@
                         @forelse($relatedPosts as $related)
                             <div class="binduz-er-sidebar-latest-post-item">
                                 <div class="binduz-er-thumb">
-                                    <img src="{{ $related->featured_image ? asset('storage/'.$related->featured_image) : asset('assets/images/latest-post-1.jpg') }}" alt="{{ $related->title }}">
+                                    <img src="{{ $related->featured_image ? asset('storage/'.$related->featured_image) : asset('assets/images/latest-post-1.jpg') }}" alt="{{ $related->translated('title') }}">
                                 </div>
                                 <div class="binduz-er-content">
                                     <span><i class="fal fa-calendar-alt"></i> {{ optional($related->published_at)->format('d M Y') }}</span>
-                                    <h4 class="binduz-er-title"><a href="{{ route('berita.show', $related->slug) }}">{{ $related->title }}</a></h4>
+                                    <h4 class="binduz-er-title"><a href="{{ route('berita.show', $related->slug) }}">{{ $related->translated('title') }}</a></h4>
                                 </div>
                             </div>
                         @empty
@@ -76,3 +79,7 @@
     </div>
 </section>
 @endsection
+
+
+
+

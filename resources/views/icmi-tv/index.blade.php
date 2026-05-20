@@ -10,7 +10,13 @@
 @php
     $mainVideo = $featuredVideos->first();
     $sideVideos = $featuredVideos->slice(1);
-    $programLabels = ['BERITA', 'DIALOG', 'IMTAQ', 'TOKOH', 'NEWS'];
+    $programLabels = [
+        __('ui.pages.tv.labels.news'),
+        __('ui.pages.tv.labels.dialogue'),
+        __('ui.pages.tv.labels.imtaq'),
+        __('ui.pages.tv.labels.figure'),
+        __('ui.pages.tv.labels.update'),
+    ];
 @endphp
 
 <section class="icmi-tv-showcase">
@@ -29,14 +35,14 @@
                         <div class="ratio ratio-16x9">
                             <iframe
                                 src="{{ $mainVideo->embed_url }}"
-                                title="{{ $mainVideo->title }}"
+                                title="{{ $mainVideo->translated('title') }}"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 referrerpolicy="strict-origin-when-cross-origin"
                                 allowfullscreen>
                             </iframe>
                         </div>
                         <div class="icmi-tv-main-card__body">
-                            <h3><a href="{{ route('icmi-tv.show', $mainVideo->slug) }}">{{ $mainVideo->title }}</a></h3>
+                            <h3><a href="{{ route('icmi-tv.show', $mainVideo->slug) }}">{{ $mainVideo->translated('title') }}</a></h3>
                             <p><i class="fal fa-calendar-alt"></i> {{ optional($mainVideo->published_at)->translatedFormat('l, j M Y') }}</p>
                         </div>
                     </article>
@@ -47,11 +53,11 @@
                             <div class="col-md-6">
                                 <article class="icmi-tv-side-card">
                                     <a class="thumb" href="{{ route('icmi-tv.show', $video->slug) }}">
-                                        <img src="{{ $video->thumbnail ? asset('storage/'.$video->thumbnail) : 'https://img.youtube.com/vi/'.$video->youtube_id.'/hqdefault.jpg' }}" alt="{{ $video->title }}">
+                                        <img src="{{ $video->thumbnail ? asset('storage/'.$video->thumbnail) : 'https://img.youtube.com/vi/'.$video->youtube_id.'/hqdefault.jpg' }}" alt="{{ $video->translated('title') }}">
                                         <span class="badge">{{ $programLabels[$index % count($programLabels)] }}</span>
                                         <span class="play"><i class="fas fa-play"></i></span>
                                     </a>
-                                    <h4><a href="{{ route('icmi-tv.show', $video->slug) }}">{{ \Illuminate\Support\Str::limit($video->title, 62) }}</a></h4>
+                                    <h4><a href="{{ route('icmi-tv.show', $video->slug) }}">{{ \Illuminate\Support\Str::limit($video->translated('title'), 62) }}</a></h4>
                                     <p><i class="fal fa-calendar-alt"></i> {{ optional($video->published_at)->translatedFormat('D, j M Y') }}</p>
                                 </article>
                             </div>
@@ -76,11 +82,11 @@
                 <div class="col-lg-4 col-md-6">
                     <article class="icmi-tv-program-card">
                         <a class="thumb" href="{{ route('icmi-tv.show', $video->slug) }}">
-                            <img src="{{ $video->thumbnail ? asset('storage/'.$video->thumbnail) : 'https://img.youtube.com/vi/'.$video->youtube_id.'/hqdefault.jpg' }}" alt="{{ $video->title }}">
+                            <img src="{{ $video->thumbnail ? asset('storage/'.$video->thumbnail) : 'https://img.youtube.com/vi/'.$video->youtube_id.'/hqdefault.jpg' }}" alt="{{ $video->translated('title') }}">
                             <span class="badge">{{ $programLabels[$index % count($programLabels)] }}</span>
                             <span class="play"><i class="fas fa-play"></i></span>
                         </a>
-                        <h4><a href="{{ route('icmi-tv.show', $video->slug) }}">{{ \Illuminate\Support\Str::limit($video->title, 72) }}</a></h4>
+                        <h4><a href="{{ route('icmi-tv.show', $video->slug) }}">{{ \Illuminate\Support\Str::limit($video->translated('title'), 72) }}</a></h4>
                         <p><i class="fal fa-calendar-alt"></i> {{ optional($video->published_at)->translatedFormat('l, j M Y') }}</p>
                     </article>
                 </div>
@@ -93,3 +99,4 @@
     </div>
 </section>
 @endsection
+
