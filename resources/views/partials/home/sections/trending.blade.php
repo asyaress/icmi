@@ -25,9 +25,9 @@
                 @if($headline)
                     <div class="row mt-30">
                         <div class="col-lg-7 col-md-6">
-                            <div class="binduz-er-trending-box icmi-trending-headline-box">
-                                <div class="binduz-er-trending-news-item icmi-trending-headline">
-                                    <img src="{{ $headline->featured_image ? asset('storage/'.$headline->featured_image) : asset('assets/images/trending-thumb.png') }}" alt="{{ $headline->translated('title') }}">
+                                <div class="binduz-er-trending-box icmi-trending-headline-box">
+                                    <div class="binduz-er-trending-news-item icmi-trending-headline">
+                                        <img class="icmi-trending-headline__img" src="{{ $headline->featured_image ? asset('storage/'.$headline->featured_image) : asset('assets/images/trending-thumb.png') }}" alt="{{ $headline->translated('title') }}">
                                     <div class="binduz-er-trending-news-overlay">
                                         <div class="binduz-er-trending-news-meta">
                                             <div class="binduz-er-meta-categories"><a href="#">{{ optional($headline->category)->translated('name') ?? __('ui.menu.news') }}</a></div>
@@ -46,7 +46,7 @@
                                 @foreach($sidePosts as $post)
                                     <article class="icmi-trending-side-card">
                                         <a class="icmi-trending-side-card__thumb" href="{{ $resolvePostUrl($post) }}">
-                                            <img src="{{ $post->featured_image ? asset('storage/'.$post->featured_image) : asset('assets/images/trending-news-list-thumb-1.jpg') }}" alt="{{ $post->translated('title') }}">
+                                            <img class="icmi-trending-side-card__img" src="{{ $post->featured_image ? asset('storage/'.$post->featured_image) : asset('assets/images/trending-news-list-thumb-1.jpg') }}" alt="{{ $post->translated('title') }}">
                                         </a>
                                         <div class="icmi-trending-side-card__content">
                                             <div class="binduz-er-meta-item icmi-trending-side-card__meta">

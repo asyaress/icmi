@@ -1,21 +1,40 @@
 <!--====== Required meta tags ======-->
 @php
-    $defaultTitle = \App\Models\Setting::get('site_name', 'ICMI Kaltim');
+    $siteName = \App\Models\Setting::get('site_name', 'ICMI Kaltim');
+    $siteTagline = \App\Models\Setting::get('site_tagline', 'Website resmi ICMI Kaltim');
+    $defaultTitle = \App\Models\Setting::get('meta_default_title', $siteName . ' | ' . $siteTagline);
+    $defaultDescription = \App\Models\Setting::get('meta_default_description', 'Portal resmi ICMI Kaltim untuk berita, opini tokoh, info media, galeri, dan ICMI TV.');
+    $defaultKeywords = \App\Models\Setting::get('meta_default_keywords', 'ICMI Kaltim, ICMI Kalimantan Timur, berita ICMI, opini tokoh, info media, galeri ICMI, ICMI TV');
+
     $metaTitle = trim($__env->yieldContent('meta_title')) ?: trim($__env->yieldContent('title')) ?: $defaultTitle;
-    $metaDescription = trim($__env->yieldContent('meta_description')) ?: \App\Models\Setting::get('meta_default_description', 'Portal resmi ICMI Kaltim.');
+    $metaDescription = trim($__env->yieldContent('meta_description')) ?: $defaultDescription;
+    $metaKeywords = trim($__env->yieldContent('meta_keywords')) ?: $defaultKeywords;
     $metaImage = trim($__env->yieldContent('meta_image')) ?: asset('logo-icmi.png');
     $canonical = trim($__env->yieldContent('canonical_url')) ?: url()->current();
+    $robots = trim($__env->yieldContent('meta_robots')) ?: 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1';
+
+    $query = request()->query();
+    unset($query['lang']);
+    $xDefaultUrl = url()->current() . (empty($query) ? '' : ('?' . http_build_query($query)));
+    $hreflangId = request()->fullUrlWithQuery(['lang' => 'id']);
+    $hreflangEn = request()->fullUrlWithQuery(['lang' => 'en']);
 @endphp
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="description" content="{{ $metaDescription }}">
+<meta name="keywords" content="{{ $metaKeywords }}">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index,follow">
+<meta name="robots" content="{{ $robots }}">
 <link rel="canonical" href="{{ $canonical }}">
+<link rel="alternate" hreflang="id-ID" href="{{ $hreflangId }}">
+<link rel="alternate" hreflang="en-US" href="{{ $hreflangEn }}">
+<link rel="alternate" hreflang="x-default" href="{{ $xDefaultUrl }}">
 
 <meta property="og:type" content="article">
 <meta property="og:title" content="{{ $metaTitle }}">
 <meta property="og:description" content="{{ $metaDescription }}">
+<meta property="og:site_name" content="{{ $siteName }}">
+<meta property="og:locale" content="{{ app()->getLocale() === 'en' ? 'en_US' : 'id_ID' }}">
 <meta property="og:url" content="{{ $canonical }}">
 <meta property="og:image" content="{{ $metaImage }}">
 

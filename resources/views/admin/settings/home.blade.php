@@ -21,8 +21,16 @@
                     <input type="text" name="site_tagline" id="site_tagline" class="form-control" value="{{ old('site_tagline', $settings['site_tagline']) }}">
                 </div>
                 <div class="col-12">
+                    <label for="meta_default_title" class="form-label">Meta Title Default</label>
+                    <input type="text" name="meta_default_title" id="meta_default_title" class="form-control" value="{{ old('meta_default_title', $settings['meta_default_title']) }}">
+                </div>
+                <div class="col-12">
                     <label for="meta_default_description" class="form-label">Meta Description Default</label>
                     <textarea name="meta_default_description" id="meta_default_description" rows="3" class="form-control">{{ old('meta_default_description', $settings['meta_default_description']) }}</textarea>
+                </div>
+                <div class="col-12">
+                    <label for="meta_default_keywords" class="form-label">Meta Keywords (opsional)</label>
+                    <textarea name="meta_default_keywords" id="meta_default_keywords" rows="2" class="form-control">{{ old('meta_default_keywords', $settings['meta_default_keywords']) }}</textarea>
                 </div>
             </div>
 

@@ -16,7 +16,9 @@ class UpdateHomeSettingsRequest extends FormRequest
         return [
             'site_name' => ['nullable', 'string', 'max:100'],
             'site_tagline' => ['nullable', 'string', 'max:255'],
+            'meta_default_title' => ['nullable', 'string', 'max:255'],
             'meta_default_description' => ['nullable', 'string', 'max:320'],
+            'meta_default_keywords' => ['nullable', 'string', 'max:500'],
 
             'home_show_hero' => ['nullable', 'boolean'],
             'home_show_trending' => ['nullable', 'boolean'],

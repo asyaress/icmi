@@ -82,7 +82,9 @@ class ProfessionalDummySeeder extends Seeder
         $settings = array_merge(HomeSettingController::DEFAULTS, [
             'site_name' => 'ICMI Kaltim',
             'site_tagline' => 'Kolaborasi Cendekiawan Muslim untuk Kalimantan Timur Maju',
+            'meta_default_title' => 'ICMI Kaltim | Website Resmi Ikatan Cendekiawan Muslim Indonesia Kalimantan Timur',
             'meta_default_description' => 'Portal resmi ICMI Kaltim berisi berita strategis, opini tokoh, info media, galeri kegiatan, dan program ICMI TV.',
+            'meta_default_keywords' => 'ICMI Kaltim, ICMI Kalimantan Timur, berita ICMI, opini tokoh, info media, galeri ICMI, ICMI TV',
             'home_show_hero' => '1',
             'home_show_trending' => '1',
             'home_show_featured' => '1',

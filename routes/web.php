@@ -28,7 +28,13 @@ Route::get('/', HomeController::class)->name('home');
 
 Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
 Route::get('/robots.txt', function () {
-    $content = "User-agent: *\nAllow: /\nSitemap: " . route('sitemap') . "\n";
+    $content = implode("\n", [
+        'User-agent: *',
+        'Allow: /',
+        'Disallow: /admin',
+        'Sitemap: ' . route('sitemap'),
+        '',
+    ]);
 
     return response($content, 200, ['Content-Type' => 'text/plain; charset=UTF-8']);
 })->name('robots');

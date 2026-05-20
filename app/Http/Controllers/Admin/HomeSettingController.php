@@ -13,7 +13,9 @@ class HomeSettingController extends Controller
     public const DEFAULTS = [
         'site_name' => 'ICMI Kaltim',
         'site_tagline' => 'Website resmi ICMI Kaltim',
+        'meta_default_title' => 'ICMI Kaltim | Website Resmi Ikatan Cendekiawan Muslim Indonesia Kalimantan Timur',
         'meta_default_description' => 'Portal resmi ICMI Kaltim untuk berita, opini tokoh, info media, galeri, dan ICMI TV.',
+        'meta_default_keywords' => 'ICMI Kaltim, ICMI Kalimantan Timur, berita ICMI, opini tokoh, info media, galeri ICMI, ICMI TV',
         'home_show_hero' => '1',
         'home_show_trending' => '1',
         'home_show_featured' => '1',
