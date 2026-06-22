@@ -23,7 +23,7 @@ class ResponsiveLoaderTest extends TestCase
 
     public function test_deployment_safe_assets_are_served_through_laravel(): void
     {
-        foreach (['theme.css', 'loader.js', 'category-card.jpg', 'portal-banner.jpg', 'promo-card.jpg'] as $asset) {
+        foreach (['theme.css', 'loader.js', 'category-card.jpg', 'portal-banner.jpg', 'promo-card.jpg', 'trending-background.png'] as $asset) {
             $this->get(route('icmi-assets', ['asset' => $asset]))
                 ->assertOk()
                 ->assertHeader('Cache-Control');

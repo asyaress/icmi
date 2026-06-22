@@ -12,6 +12,7 @@ class IcmiAssetController extends Controller
         'category-card.jpg' => ['assets/images/icmi-category-card-v1.jpg', 'image/jpeg'],
         'portal-banner.jpg' => ['assets/images/icmi-portal-banner-v1.jpg', 'image/jpeg'],
         'promo-card.jpg' => ['assets/images/icmi-promo-card-v1.jpg', 'image/jpeg'],
+        'trending-background.png' => ['back.png', 'image/png'],
     ];
 
     public function __invoke(string $asset): BinaryFileResponse

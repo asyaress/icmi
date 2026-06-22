@@ -1311,10 +1311,32 @@ h6 {
 .binduz-er-trending-today-area {
     padding-top: 56px;
     padding-bottom: 30px;
+    background: #ffffff !important;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.binduz-er-trending-today-area .binduz-er-bg-cover {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff !important;
+    background-image: url('/icmi-assets/trending-background.png') !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+    background-size: 100% auto !important;
+    background-attachment: scroll !important;
+}
+
+.binduz-er-trending-today-area > .container {
+    position: relative;
+    z-index: 1;
 }
 
 .binduz-er-trending-today-area .binduz-er-bg-cover::before {
-    background: rgba(0, 0, 0, 0.86) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
 }
 
 .binduz-er-trending-today-topbar .binduz-er-trending-today-title .binduz-er-title::before {
@@ -1330,6 +1352,7 @@ h6 {
 
 .binduz-er-trending-today-topbar .binduz-er-trending-today-title .binduz-er-title {
     margin-bottom: 0;
+    color: var(--icmi-black) !important;
     font-size: 40px;
     line-height: 1.2;
     white-space: nowrap;
