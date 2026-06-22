@@ -1336,7 +1336,9 @@ h6 {
 }
 
 .binduz-er-trending-today-area .binduz-er-bg-cover::before {
-    background: rgba(255, 255, 255, 0.08) !important;
+    content: none !important;
+    display: none !important;
+    background: transparent !important;
 }
 
 .binduz-er-trending-today-topbar .binduz-er-trending-today-title .binduz-er-title::before {
