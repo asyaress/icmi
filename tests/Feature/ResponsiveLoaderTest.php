@@ -16,8 +16,19 @@ class ResponsiveLoaderTest extends TestCase
                 ->assertOk()
                 ->assertSee('id="icmi-page-loader"', false)
                 ->assertSee('logo-icmi.png', false)
-                ->assertSee('icmi-page-loader.js', false)
-                ->assertSee('icmi-theme.css?v=', false);
+                ->assertSee('/icmi-assets/loader.js', false)
+                ->assertSee('/icmi-assets/theme.css', false);
         }
+    }
+
+    public function test_deployment_safe_assets_are_served_through_laravel(): void
+    {
+        foreach (['theme.css', 'loader.js', 'category-card.jpg', 'portal-banner.jpg', 'promo-card.jpg'] as $asset) {
+            $this->get(route('icmi-assets', ['asset' => $asset]))
+                ->assertOk()
+                ->assertHeader('Cache-Control');
+        }
+
+        $this->get(route('icmi-assets', ['asset' => 'not-allowed.txt']))->assertNotFound();
     }
 }

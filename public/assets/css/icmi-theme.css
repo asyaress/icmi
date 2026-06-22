@@ -587,7 +587,7 @@ h6 {
 .binduz-er-sidebar-categories .binduz-er-categories-list .binduz-er-item:nth-child(3),
 .binduz-er-sidebar-categories .binduz-er-categories-list .binduz-er-item:nth-child(4),
 .binduz-er-sidebar-categories .binduz-er-categories-list .binduz-er-item:nth-child(5) {
-    background-image: url('../images/icmi-category-card-v1.jpg') !important;
+    background-image: url('/icmi-assets/category-card.jpg') !important;
     background-position: center !important;
     background-size: cover !important;
 }
@@ -642,7 +642,7 @@ h6 {
     padding: 16px 18px 18px;
     overflow: hidden;
     background-color: var(--icmi-black) !important;
-    background-image: url('../images/icmi-promo-card-v1.jpg') !important;
+    background-image: url('/icmi-assets/promo-card.jpg') !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;

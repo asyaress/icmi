@@ -38,7 +38,7 @@
                 </div>
                 <div class="binduz-er-add pt-10">
                     <a class="icmi-portal-banner" href="{{ route('sekilas-icmi') }}">
-                        <img src="{{ asset('assets/images/icmi-portal-banner-v1.jpg') }}" alt="ICMI Kaltim - Inspiratif dan Transformatif">
+                        <img src="{{ route('icmi-assets', ['asset' => 'portal-banner.jpg']) }}" alt="ICMI Kaltim - Inspiratif dan Transformatif">
                     </a>
                 </div>
             </div>

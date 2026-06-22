@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\VideoController as AdminVideoController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\IcmiAssetController;
 use App\Http\Controllers\IcmiTvController;
 use App\Http\Controllers\InfoMediaController;
 use App\Http\Controllers\OpiniTokohController;
@@ -27,6 +28,9 @@ use App\Http\Controllers\WeatherController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
+Route::get('/icmi-assets/{asset}', IcmiAssetController::class)
+    ->where('asset', '[A-Za-z0-9.-]+')
+    ->name('icmi-assets');
 
 Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
 Route::get('/robots.txt', function () {
