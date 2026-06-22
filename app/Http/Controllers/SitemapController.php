@@ -20,6 +20,7 @@ class SitemapController extends Controller
                 ['loc' => route('opini-tokoh'), 'lastmod' => now()],
                 ['loc' => route('info-media'), 'lastmod' => now()],
                 ['loc' => route('galeri'), 'lastmod' => now()],
+                ['loc' => route('unduhan'), 'lastmod' => now()],
                 ['loc' => route('icmi-tv'), 'lastmod' => now()],
             ];
 

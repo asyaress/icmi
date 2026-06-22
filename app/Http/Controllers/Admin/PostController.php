@@ -11,6 +11,7 @@ use App\Models\Tag;
 use App\Support\SlugGenerator;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
@@ -40,7 +41,7 @@ class PostController extends Controller
     public function create(): View
     {
         return view('admin.posts.create', [
-            'categories' => Category::query()->where('is_active', true)->orderBy('name')->get(),
+            'categories' => $this->newsCategories(),
             'tags' => Tag::query()->orderBy('name')->get(),
         ]);
     }
@@ -84,7 +85,7 @@ class PostController extends Controller
 
         return view('admin.posts.edit', [
             'post' => $post->load('tags'),
-            'categories' => Category::query()->where('is_active', true)->orderBy('name')->get(),
+            'categories' => $this->newsCategories(),
             'tags' => Tag::query()->orderBy('name')->get(),
         ]);
     }
@@ -135,5 +136,14 @@ class PostController extends Controller
         $post->delete();
 
         return redirect()->route('admin.posts.index')->with('success', 'Berita berhasil dihapus.');
+    }
+
+    private function newsCategories(): Collection
+    {
+        return Category::query()
+            ->icmiNews()
+            ->where('is_active', true)
+            ->orderBy('name')
+            ->get();
     }
 }

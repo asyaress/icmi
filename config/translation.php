@@ -21,5 +21,6 @@ return [
         App\Models\ProfilePage::class => ['title', 'menu_label', 'excerpt', 'content', 'seo_title', 'seo_description'],
         App\Models\Video::class => ['title', 'description', 'seo_title', 'seo_description'],
         App\Models\Gallery::class => ['title', 'description', 'seo_title', 'seo_description'],
+        App\Models\Download::class => ['title', 'description'],
     ],
 ];

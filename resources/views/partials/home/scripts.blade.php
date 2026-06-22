@@ -25,3 +25,4 @@
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script src="{{ asset('assets/js/icmi-weather-rotator.js') }}"></script>
     <script src="{{ asset('assets/js/icmi-auto-search.js') }}"></script>
+    <script src="{{ asset('assets/js/icmi-page-loader.js') }}?v={{ filemtime(public_path('assets/js/icmi-page-loader.js')) }}"></script>

@@ -77,11 +77,12 @@
                             <div class="binduz-er-item">
                                 <a href="{{ route('berita', ['category' => $category->slug]) }}">
                                     <span>{{ $category->translated('name') }}</span>
+                                    <img class="icmi-category-card__logo" src="{{ asset('logo-icmi.png') }}" alt="" aria-hidden="true">
                                     <span class="binduz-er-number">{{ $category->published_posts_count }}</span>
                                 </a>
                             </div>
                         @empty
-                            <div class="binduz-er-item"><a href="#"><span>{{ __('ui.common.no_data') }}</span><span class="binduz-er-number">0</span></a></div>
+                            <div class="binduz-er-item"><a href="#"><span>{{ __('ui.common.no_data') }}</span><img class="icmi-category-card__logo" src="{{ asset('logo-icmi.png') }}" alt="" aria-hidden="true"><span class="binduz-er-number">0</span></a></div>
                         @endforelse
                     </div>
                 </div>

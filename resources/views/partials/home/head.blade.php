@@ -71,4 +71,4 @@
 <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
 <!--====== ICMI Theme css ======-->
-<link rel="stylesheet" href="{{ asset('assets/css/icmi-theme.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/icmi-theme.css') }}?v={{ filemtime(public_path('assets/css/icmi-theme.css')) }}">

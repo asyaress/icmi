@@ -76,10 +76,12 @@
                             <a href="{{ route('berita') }}"><span><i class="fas fa-newspaper"></i> {{ __('ui.menu.news') }}</span><span>{{ __('ui.common.open') }}</span></a>
                             <a href="{{ route('opini-tokoh') }}"><span><i class="fas fa-user-edit"></i> {{ __('ui.menu.opinion') }}</span><span>{{ __('ui.common.open') }}</span></a>
                             <a href="{{ route('info-media') }}"><span><i class="fas fa-bullhorn"></i> {{ __('ui.menu.info_media') }}</span><span>{{ __('ui.common.open') }}</span></a>
+                            <a href="{{ route('unduhan') }}"><span><i class="fas fa-file-pdf"></i> {{ __('ui.menu.letter_downloads') }}</span><span>{{ __('ui.common.open') }}</span></a>
                             <a href="{{ route('icmi-tv') }}"><span><i class="fab fa-youtube"></i> {{ __('ui.menu.tv') }}</span><span>{{ __('ui.common.open') }}</span></a>
                         </div>
                     </div>
                     <div class="binduz-er-sidebar-add mt-20">
+                        <img class="icmi-promo-card__logo" src="{{ asset('logo-icmi.png') }}" alt="Logo ICMI Kaltim">
                         <h3 class="binduz-er-title">{{ __('ui.sections.activity_docs') }} <span>{{ __('ui.sections.activity_docs_sub') }}</span></h3>
                         <a class="binduz-er-main-btn" href="{{ route('galeri') }}">{{ __('ui.sections.view_gallery') }}</a>
                     </div>

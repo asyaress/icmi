@@ -41,10 +41,13 @@
                                 <li><a href="{{ route('info-media', ['category' => 'siaran-pers']) }}">- {{ __('ui.submenu.info_media.siaran_pers') }}</a></li>
                                 <li><a href="{{ route('info-media', ['category' => 'kabar-icmi']) }}">- {{ __('ui.submenu.info_media.kabar_icmi') }}</a></li>
                                 <li><a href="{{ route('berita') }}">{{ __('ui.menu.news') }}</a></li>
+                                <li><a href="{{ route('berita', ['category' => \App\Models\Category::ICMI_DAERAH_SLUG]) }}">- {{ __('ui.submenu.news.icmi_daerah') }}</a></li>
+                                <li><a href="{{ route('berita', ['category' => \App\Models\Category::ICMI_PUSAT_SLUG]) }}">- {{ __('ui.submenu.news.icmi_pusat') }}</a></li>
                                 <li><a href="{{ route('opini-tokoh') }}">{{ __('ui.menu.opinion') }}</a></li>
                                 <li><a href="{{ route('opini-tokoh', ['category' => 'opini']) }}">- {{ __('ui.submenu.opinion.opini') }}</a></li>
                                 <li><a href="{{ route('opini-tokoh', ['category' => 'tokoh']) }}">- {{ __('ui.submenu.opinion.tokoh') }}</a></li>
                                 <li><a href="{{ route('galeri') }}">{{ __('ui.menu.gallery') }}</a></li>
+                                <li><a href="{{ route('unduhan') }}">{{ __('ui.menu.letter_downloads') }}</a></li>
                                 <li><a href="{{ route('icmi-tv') }}">{{ __('ui.menu.tv') }}</a></li>
                             </ul>
                         </div>

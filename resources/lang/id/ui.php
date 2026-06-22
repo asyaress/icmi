@@ -16,7 +16,10 @@ return [
         'news' => 'Berita',
         'opinion' => 'Opini & Tokoh',
         'gallery' => 'Galeri',
+        'downloads' => 'Unduhan',
+        'letter_downloads' => 'Unduhan Surat',
         'tv' => 'ICMI TV',
+        'open_navigation' => 'Buka menu navigasi',
     ],
     'submenu' => [
         'about' => [
@@ -30,6 +33,10 @@ return [
         'info_media' => [
             'siaran_pers' => 'SIARAN PERS',
             'kabar_icmi' => 'KABAR ICMI',
+        ],
+        'news' => [
+            'icmi_daerah' => 'ICMI DAERAH',
+            'icmi_pusat' => 'ICMI PUSAT',
         ],
         'opinion' => [
             'opini' => 'OPINI',
@@ -45,8 +52,12 @@ return [
         'headline_3' => 'Menghormati bulan warisan Asia Pasifik Amerika di Google.',
     ],
     'search' => [
+        'open' => 'Buka pencarian',
         'close' => 'Tutup',
         'placeholder' => 'Cari di website...',
+    ],
+    'loading' => [
+        'label' => 'Memuat halaman ICMI...',
     ],
     'common' => [
         'by' => 'Oleh',
@@ -127,6 +138,15 @@ return [
                 'figure' => 'TOKOH',
                 'update' => 'UPDATE',
             ],
+        ],
+        'downloads' => [
+            'title' => 'Unduhan Surat',
+            'description' => 'Surat dan dokumen resmi ICMI Kaltim yang dapat diunduh publik.',
+            'search_placeholder' => 'Cari judul surat',
+            'file_label' => 'Surat',
+            'preview_button' => 'Preview',
+            'download_button' => 'Unduh File',
+            'empty' => 'Belum ada surat yang dipublish.',
         ],
         'about' => [
             'title' => 'Sekilas ICMI',

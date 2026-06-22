@@ -16,7 +16,10 @@ return [
         'news' => 'News',
         'opinion' => 'Opinion & Figures',
         'gallery' => 'Gallery',
+        'downloads' => 'Downloads',
+        'letter_downloads' => 'Letter Downloads',
         'tv' => 'ICMI TV',
+        'open_navigation' => 'Open navigation menu',
     ],
     'submenu' => [
         'about' => [
@@ -30,6 +33,10 @@ return [
         'info_media' => [
             'siaran_pers' => 'Press Releases',
             'kabar_icmi' => 'ICMI Updates',
+        ],
+        'news' => [
+            'icmi_daerah' => 'REGIONAL ICMI',
+            'icmi_pusat' => 'CENTRAL ICMI',
         ],
         'opinion' => [
             'opini' => 'Opinions',
@@ -45,8 +52,12 @@ return [
         'headline_3' => 'Honoring Asian Pacific American heritage month at Google.',
     ],
     'search' => [
+        'open' => 'Open search',
         'close' => 'Close',
         'placeholder' => 'Search the website...',
+    ],
+    'loading' => [
+        'label' => 'Loading ICMI page...',
     ],
     'common' => [
         'by' => 'By',
@@ -127,6 +138,15 @@ return [
                 'figure' => 'FIGURE',
                 'update' => 'UPDATE',
             ],
+        ],
+        'downloads' => [
+            'title' => 'Letter Downloads',
+            'description' => 'Official ICMI East Kalimantan letters and documents available for public download.',
+            'search_placeholder' => 'Search letter titles',
+            'file_label' => 'Letter',
+            'preview_button' => 'Preview',
+            'download_button' => 'Download File',
+            'empty' => 'No published letters yet.',
         ],
         'about' => [
             'title' => 'About ICMI',

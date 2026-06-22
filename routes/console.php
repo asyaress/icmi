@@ -21,7 +21,7 @@ Artisan::command('icmi:cache:flush', function () {
 
 Artisan::command('icmi:cache:warm', function () {
     $baseUrl = config('app.url', 'http://localhost');
-    $paths = ['/', '/sitemap.xml', '/berita', '/opini-tokoh', '/info-media', '/galeri', '/icmi-tv', '/api/weather/kaltim'];
+    $paths = ['/', '/sitemap.xml', '/berita', '/opini-tokoh', '/info-media', '/galeri', '/unduhan', '/icmi-tv', '/api/weather/kaltim'];
 
     foreach ($paths as $path) {
         $url = rtrim($baseUrl, '/') . $path;

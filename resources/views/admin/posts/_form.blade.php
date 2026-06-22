@@ -13,7 +13,7 @@
     </div>
 
     <div class="col-md-6">
-        <label for="category_id" class="form-label">Kategori</label>
+        <label for="category_id" class="form-label">Kategori Berita ICMI</label>
         <select name="category_id" id="category_id" class="form-select" required>
             <option value="">Pilih kategori</option>
             @foreach($categories as $category)
@@ -22,6 +22,7 @@
                 </option>
             @endforeach
         </select>
+        <small class="text-muted">Pilih ICMI Daerah atau ICMI Pusat.</small>
     </div>
 
     <div class="col-md-6">

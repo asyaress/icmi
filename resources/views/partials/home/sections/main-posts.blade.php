@@ -37,7 +37,9 @@
                     @endforelse
                 </div>
                 <div class="binduz-er-add pt-10">
-                    <img src="{{ asset('assets/images/space-thumb.jpg') }}" alt="">
+                    <a class="icmi-portal-banner" href="{{ route('sekilas-icmi') }}">
+                        <img src="{{ asset('assets/images/icmi-portal-banner-v1.jpg') }}" alt="ICMI Kaltim - Inspiratif dan Transformatif">
+                    </a>
                 </div>
             </div>
             <div class="col-lg-3">

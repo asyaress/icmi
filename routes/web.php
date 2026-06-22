@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\DownloadController as AdminDownloadController;
 use App\Http\Controllers\Admin\GalleryController as AdminGalleryController;
 use App\Http\Controllers\Admin\HomeSettingController as AdminHomeSettingController;
 use App\Http\Controllers\Admin\MediaManagerController as AdminMediaManagerController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\InfoMediaController;
 use App\Http\Controllers\OpiniTokohController;
 use App\Http\Controllers\ProfilePageController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\UnduhanController;
 use App\Http\Controllers\WeatherController;
 use Illuminate\Support\Facades\Route;
 
@@ -83,6 +85,9 @@ Route::get('/galeri/{slug}', [GaleriController::class, 'show'])->name('galeri.sh
 
 Route::get('/icmi-tv', [IcmiTvController::class, 'index'])->name('icmi-tv');
 Route::get('/icmi-tv/{slug}', [IcmiTvController::class, 'show'])->name('icmi-tv.show');
+Route::get('/unduhan', [UnduhanController::class, 'index'])->name('unduhan');
+Route::get('/unduhan/{slug}/preview', [UnduhanController::class, 'preview'])->name('unduhan.preview');
+Route::get('/unduhan/{slug}/download', [UnduhanController::class, 'download'])->name('unduhan.download');
 
 Route::prefix('admin')->name('admin.')->group(function (): void {
     Route::middleware('guest')->group(function (): void {
@@ -132,6 +137,11 @@ Route::prefix('admin')->name('admin.')->group(function (): void {
 
         Route::resource('videos', AdminVideoController::class)
             ->parameters(['videos' => 'video'])
+            ->except('show')
+            ->middleware('role:super-admin,admin,editor,contributor');
+
+        Route::resource('downloads', AdminDownloadController::class)
+            ->parameters(['downloads' => 'download'])
             ->except('show')
             ->middleware('role:super-admin,admin,editor,contributor');
 

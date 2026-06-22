@@ -50,6 +50,10 @@
                                         </li>
                                         <li class="nav-item {{ request()->routeIs('berita*') ? 'active' : '' }}">
                                             <a class="nav-link" href="{{ route('berita') }}">{{ __('ui.menu.news') }}</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="{{ route('berita', ['category' => \App\Models\Category::ICMI_DAERAH_SLUG]) }}">{{ __('ui.submenu.news.icmi_daerah') }}</a></li>
+                                                <li><a href="{{ route('berita', ['category' => \App\Models\Category::ICMI_PUSAT_SLUG]) }}">{{ __('ui.submenu.news.icmi_pusat') }}</a></li>
+                                            </ul>
                                         </li>
                                         <li class="nav-item {{ request()->routeIs('opini-tokoh*') ? 'active' : '' }}">
                                             <a class="nav-link" href="{{ route('opini-tokoh') }}">{{ __('ui.menu.opinion') }}</a>
@@ -61,6 +65,9 @@
                                         <li class="nav-item {{ request()->routeIs('galeri*') ? 'active' : '' }}">
                                             <a class="nav-link" href="{{ route('galeri') }}">{{ __('ui.menu.gallery') }}</a>
                                         </li>
+                                        <li class="nav-item {{ request()->routeIs('unduhan*') ? 'active' : '' }}">
+                                            <a class="nav-link" href="{{ route('unduhan') }}">{{ __('ui.menu.letter_downloads') }}</a>
+                                        </li>
                                         <li class="nav-item {{ request()->routeIs('icmi-tv*') ? 'active' : '' }}">
                                             <a class="nav-link" href="{{ route('icmi-tv') }}">{{ __('ui.menu.tv') }}</a>
                                         </li>
@@ -68,11 +75,11 @@
                                 </div> <!-- navbar collapse -->
                                 <div class="binduz-er-navbar-btn d-flex">
                                     <div class="binduz-er-widget d-flex">
-                                        <a class="binduz-er-news-search-open" href="#"><i class="far fa-search"></i></a>
+                                        <a class="binduz-er-news-search-open" href="#" aria-label="{{ __('ui.search.open') }}"><i class="far fa-search" aria-hidden="true"></i></a>
                                     </div>
-                                    <span class="binduz-er-toggle-btn binduz-er-news-canvas_open d-block d-lg-none">
-                                        <i class="fal fa-bars"></i>
-                                    </span>
+                                    <button type="button" class="binduz-er-toggle-btn binduz-er-news-canvas_open d-block d-lg-none" aria-label="{{ __('ui.menu.open_navigation') }}">
+                                        <i class="fal fa-bars" aria-hidden="true"></i>
+                                    </button>
                                 </div>
                             </nav>
                         </div> <!-- navigation -->

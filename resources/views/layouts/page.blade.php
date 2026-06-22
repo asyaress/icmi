@@ -5,6 +5,8 @@
 </head>
 <body class="@yield('body_class', 'gray-bg bg-2')">
 
+    @include('partials.shared.page-loader')
+
     @include('partials.page.offcanvas')
 
     @include('partials.page.search')

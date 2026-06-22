@@ -76,6 +76,7 @@
                 <a class="nav-link {{ request()->routeIs('admin.media-info.*') ? 'active' : '' }}" href="{{ route('admin.media-info.index') }}">Info Media</a>
                 <a class="nav-link {{ request()->routeIs('admin.galleries.*') ? 'active' : '' }}" href="{{ route('admin.galleries.index') }}">Galeri</a>
                 <a class="nav-link {{ request()->routeIs('admin.videos.*') ? 'active' : '' }}" href="{{ route('admin.videos.index') }}">ICMI TV</a>
+                <a class="nav-link {{ request()->routeIs('admin.downloads.*') ? 'active' : '' }}" href="{{ route('admin.downloads.index') }}">Unduhan Surat</a>
                 <a class="nav-link {{ request()->routeIs('admin.media-manager.*') ? 'active' : '' }}" href="{{ route('admin.media-manager.index') }}">Media Manager</a>
                 <a class="nav-link {{ request()->routeIs('admin.profile-pages.*') ? 'active' : '' }}" href="{{ route('admin.profile-pages.index') }}">Profil Sekilas ICMI</a>
                 <a class="nav-link {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}" href="{{ route('admin.categories.index') }}">Kategori</a>

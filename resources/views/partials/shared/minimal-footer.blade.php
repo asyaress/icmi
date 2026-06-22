@@ -17,6 +17,7 @@
                         <a href="{{ route('berita') }}">{{ __('ui.menu.news') }}</a>
                         <a href="{{ route('opini-tokoh') }}">{{ __('ui.menu.opinion') }}</a>
                         <a href="{{ route('galeri') }}">{{ __('ui.menu.gallery') }}</a>
+                        <a href="{{ route('unduhan') }}">{{ __('ui.menu.letter_downloads') }}</a>
                         <a href="{{ route('icmi-tv') }}">{{ __('ui.menu.tv') }}</a>
                     </nav>
                 </div>

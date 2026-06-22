@@ -5,6 +5,8 @@
 </head>
 <body>
 
+    @include('partials.shared.page-loader')
+
     @include('partials.home.offcanvas')
 
     @include('partials.home.search')
